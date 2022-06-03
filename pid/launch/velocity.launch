@@ -1,0 +1,69 @@
+  <launch>
+
+    <node pkg="rostopic" type="rostopic" name="arbitrary_name" args="pub /setpoint_null std_msgs/Float64 0 -r 2" output="screen"/>
+
+    <node name="pidLinealPosition" pkg="pid" type="controller" >
+      <param name="Kp" value="0.1" />
+      <param name="Ki" value="0" />
+      <param name="Kd" value="0" />
+      <param name="upper_limit" value="10" />
+      <param name="lower_limit" value="-10" />
+      <param name="windup_limit" value="10" />
+      <param name="max_loop_frequency" value="100.0" />
+      <param name="min_loop_frequency" value="1.0" />
+      <param name="setpoint_timeout" value="1.0" /> <!--mira el state-->
+      <remap from="/setpoint" to="/setpoint_null"/>
+      <remap from="/state" to="/state_lineal_pidRef"/>
+      <remap from="/control_effort" to="/control_lineal"/>
+    </node>
+
+    <node name="pidAngularPosition" pkg="pid" type="controller" >
+      <param name="Kp" value="0.2" />
+      <param name="Ki" value="0.05" />
+      <param name="Kd" value="0" />
+      <param name="upper_limit" value="10" />
+      <param name="lower_limit" value="-10" />
+      <param name="windup_limit" value="10" />
+      <param name="max_loop_frequency" value="100.0" />
+      <param name="setpoint_timeout" value="1.0" /> <!--mira el state-->
+      <remap from="/setpoint" to="/setpoint_null"/>
+      <remap from="/state" to="/state_angular_pidRef"/>
+      <remap from="/control_effort" to="/control_angular"/>
+    </node>
+
+<!-- <node pkg="rostopic" type="rostopic" name="lineal_forzada" args="pub /control_lineal std_msgs/Float64 3 -r 2" output="screen"/> -->
+<!-- <node pkg="rostopic" type="rostopic" name="state_lineal_forzada" args="pub /state_vel_lineal    1 -r 2" output="screen"/> -->
+
+    <!-- <node name="pidControlVelLineal" pkg="pid" type="controller" >
+      <param name="Kp" value="0.4" />
+      <param name="Ki" value="0.2" />
+      <param name="Kd" value="0.2" />
+      <param name="upper_limit" value="10" />
+      <param name="lower_limit" value="-10" />
+      <param name="windup_limit" value="10" />
+      <param name="max_loop_frequency" value="100.0" />
+      <param name="min_loop_frequency" value="100.0" />
+      <remap from="/setpoint" to="/control_lineal"/>
+      <remap from="/state" to="/state_vel_lineal"/>
+      <remap from="/control_effort" to="/control_vel_lineal"/>
+    </node> -->
+
+<!-- <node pkg="rostopic" type="rostopic" name="angular_forzada" args="pub /control_angular std_msgs/Float64 0.01 -r 2" output="screen"/>   
+     <node name="pidControlVelAngular" pkg="pid" type="controller" >
+      <param name="Kp" value="0.4" />
+      <param name="Ki" value="0.2" />
+      <param name="Kd" value="0.2" />
+      <param name="upper_limit" value="10" />
+      <param name="lower_limit" value="-10" />
+      <param name="windup_limit" value="10" />
+      <param name="max_loop_frequency" value="100.0" />
+      <param name="min_loop_frequency" value="100.0" />
+      <remap from="/setpoint" to="/control_angular"/>
+      <remap from="/state" to="/state_vel_angular"/>
+      <remap from="/control_effort" to="/control_vel_angular"/>
+    </node> -->
+
+  <!--
+  <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" />
+  -->
+  </launch>
