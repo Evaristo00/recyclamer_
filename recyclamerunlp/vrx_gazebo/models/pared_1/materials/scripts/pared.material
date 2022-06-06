@@ -1,4 +1,4 @@
-material pared/QR
+material pared_1/QR
 {
   receive_shadows off
   technique
@@ -7,7 +7,7 @@ material pared/QR
     {
       texture_unit
       {
-        texture MarkerData_0.png
+        texture MarkerData_1.png
       }
     }
   }

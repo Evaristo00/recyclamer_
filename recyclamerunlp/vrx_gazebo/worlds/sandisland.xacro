@@ -42,28 +42,25 @@
       <uri>model://sandisland</uri>
     </include>
 
-    <!-- PAARED -->
+    <!-- PAARED0 -->
     <include>
-      <pose>175.69 114.29 5 0 0 0</pose>
-      <uri>model://pared</uri>
+    <pose>151.0 107.0 1 0 0 0</pose>
+    <uri>model://pared</uri>
     </include>
-
-    <!-- The posts for securing the WAM-V -->
-    <include>
-      <name>post_0</name>
-      <pose>169.22 112.06 0.47 0.046 -0.157 0</pose>
-      <uri>model://post</uri>
-    </include>
-    <include>
-      <name>post_1</name>
-      <pose>173.558 100.809 0.42 0.046 -0.157 0</pose>
-      <uri>model://post</uri>
-    </include>
-    <include>
-      <name>post_2</name>
-      <pose>177.64 90.86 0.3 0.046 -0.157 0</pose>
-      <uri>model://post</uri>
-    </include>
+    <!--
+    PAARED1 
+        <include>
+          <pose>151.0 106.0 1 0 0 0</pose>
+          <uri>model://pared_1</uri>
+        </include> 
+    -->
+    <!--
+    PAARED2 
+        <include>
+          <pose>151.0 107.0 2 0 0 0</pose>
+          <uri>model://pared2</uri>
+        </include> 
+    -->
 
     <!-- Antenna for communication with the WAM-V -->
     <include>

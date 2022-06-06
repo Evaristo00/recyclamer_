@@ -80,7 +80,7 @@
  
   <!-- Add a camera facing right -->
   <xacro:if value="$(arg camera_enabled)">
-    <xacro:wamv_camera name="middle_right_camera" y="0" x="1.5" z="0.65" P="${radians(-20)}"/> <!-- Y="${radians(-90)}" post_Y="${radians(-90)}" /> -->
+    <xacro:wamv_camera name="front_camera" y="0" x="1.5" z="0.65" P="${radians(-20)}"/> <!-- Y="${radians(-90)}" post_Y="${radians(-90)}" /> -->
   </xacro:if>
 
   <!-- Add simulated GPS -->

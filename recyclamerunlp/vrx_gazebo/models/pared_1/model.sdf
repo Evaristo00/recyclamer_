@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
-  <model name="pared">
+  <model name="pared_1">
     <static>true</static>
     <link name="base_link">
       <visual name="visual">
@@ -11,9 +11,9 @@
         </geometry>
         <material>
           <script>
-            <uri>model://pared/materials/scripts</uri>
-            <uri>model://pared/materials/textures</uri>
-            <name>pared/QR</name>
+            <uri>model://pared_1/materials/scripts</uri>
+            <uri>model://pared_1/materials/textures</uri>
+            <name>pared_1/QR</name>
           </script>
         </material>
       </visual>

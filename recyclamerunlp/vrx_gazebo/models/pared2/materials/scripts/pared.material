@@ -7,7 +7,7 @@ material pared2/QR
     {
       texture_unit
       {
-        texture texture2.png
+        texture MarkerData_2.png
       }
     }
   }
