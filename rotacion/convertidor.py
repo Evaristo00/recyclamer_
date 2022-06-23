@@ -8,7 +8,7 @@ import rospy
 from std_msgs.msg import Float64
 from std_msgs.msg import Float32
 
-MAX_VALUE = 0.5
+max_value = 1
 
 
 class publisher():
@@ -19,12 +19,18 @@ class publisher():
 
     #hacer revision de si esta a menos de un metro publicar 0
     def publish(self,distance,angle):
+        
+        global max_value
+        if((distance + abs(angle)) > max_value):
+            max_value = distance + abs(angle)
+        
         msgL = Float32()
         msgR = Float32()
         print("\n----------------------------------------\n")
         print("distance: {d}, angle: {a}".format(d = distance,a = angle))
-        msgR.data = float((distance + angle)/(MAX_VALUE))
-        msgL.data = float((distance - angle)/(MAX_VALUE))
+
+        msgR.data = float((distance + angle)/(max_value))
+        msgL.data = float((distance - angle)/(max_value))
         
         
         #avoid out of range

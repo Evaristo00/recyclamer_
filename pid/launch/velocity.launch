@@ -3,9 +3,9 @@
     <node pkg="rostopic" type="rostopic" name="arbitrary_name" args="pub /setpoint_null std_msgs/Float64 0 -r 2" output="screen"/>
 
     <node name="pidLinealPosition" pkg="pid" type="controller" >
-      <param name="Kp" value="0.1" />
-      <param name="Ki" value="0" />
-      <param name="Kd" value="0" />
+      <param name="Kp" value="-0.1" />
+      <param name="Ki" value="-0" />
+      <param name="Kd" value="-0" />
       <param name="upper_limit" value="10" />
       <param name="lower_limit" value="-10" />
       <param name="windup_limit" value="10" />
@@ -18,9 +18,9 @@
     </node>
 
     <node name="pidAngularPosition" pkg="pid" type="controller" >
-      <param name="Kp" value="0.2" />
-      <param name="Ki" value="0.05" />
-      <param name="Kd" value="0" />
+      <param name="Kp" value="-0.2" />
+      <param name="Ki" value="-0.05" />
+      <param name="Kd" value="-0" />
       <param name="upper_limit" value="10" />
       <param name="lower_limit" value="-10" />
       <param name="windup_limit" value="10" />
