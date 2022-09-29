@@ -11,6 +11,8 @@ catkin_install_python(PROGRAMS
    rotacion.py
    convertidor.py
    movGPS.py
+   convertidorGPS.py
+   convertidorOrientacion.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

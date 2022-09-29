@@ -43,8 +43,14 @@
     </include>
 
     <!-- PAARED0 -->
-    <include>
+    <!-- <include>
     <pose>151.0 107.0 1 0 0 0</pose>
+    <uri>model://pared</uri>
+    </include> -->
+
+    <!-- indice prueba gps -->
+    <include>
+    <pose>135.332646 107.745854 1 0 0 0</pose>
     <uri>model://pared</uri>
     </include>
     <!--
