@@ -107,8 +107,8 @@ def stateMachine():
         localAntAngle = antAngle
         antAngle = localAngle
         
-        print("angulo: {d}, antAngle: {a}".format(d = localAngle,a = localAntAngle))
-        print("\n----------------------------------------\n")
+        # print("angulo: {d}, antAngle: {a}".format(d = localAngle,a = localAntAngle))
+        # print("\n----------------------------------------\n")
 
 
         #si disminuye el angulo debo girar a la derecha, si aumenta giro a la izquierda
@@ -142,9 +142,9 @@ def listener():
     rospy.Subscriber("/angular_velocity", Float64, angularConversion)
     print("se subscribe")
     while True:
-        print("\n----------------------------------------\n")
-        print("cominezo proceso")
-        print("\n----------------------------------------\n")
+        # print("\n----------------------------------------\n")
+        # print("cominezo proceso")
+        # print("\n----------------------------------------\n")
         stateMachine()
     # rospy.spin()
 
