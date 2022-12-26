@@ -1,0 +1,8 @@
+prefix=/home/ros/Escritorio/prueba/devel
+
+Name: pid
+Description: Description of pid
+Version: 0.0.28
+Cflags: -I/home/ros/Escritorio/prueba/devel/include -I/home/ros/Escritorio/prueba/src/pid/include
+Libs: -L${prefix}/lib 
+Requires: roscpp std_msgs message_runtime dynamic_reconfigure

@@ -1,0 +1,8 @@
+prefix=/home/ros/Escritorio/prueba/devel
+
+Name: cdr
+Description: Description of cdr
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,113 @@
+primero cambie de la carpeta recyclamerunlp de todos sus archivos CMakeLists.txt su primera linea por  cmake_minimum_required(VERSION 3.0.2)
+me sigue dando error de:
+----
+CMake Error at /opt/ros/noetic/share/xacro/cmake/xacro-extras.cmake:49 (message):
+  no <output> specified for: INORDER
+Call Stack (most recent call first):
+  /opt/ros/noetic/share/xacro/cmake/xacro-extras.cmake:167 (xacro_add_xacro_file)
+  recyclamerunlp/usv_gazebo_plugins/CMakeLists.txt:108 (xacro_add_files)
+----
+
+por lo leido en el issue : https://github.com/ros/xacro/issues/192#issuecomment-733444479
+comente la linea 110 (INORDER INSTALL DESTINATION worlds) del arhcivo recyclamerunlp/usv_gazebo_plugins/CMakeLists.txt
+
+me paso a tirar el mismo error en diferente directorio
+
+----
+CMake Error at /opt/ros/noetic/share/xacro/cmake/xacro-extras.cmake:49 (message):
+  no <output> specified for: INORDER
+Call Stack (most recent call first):
+  /opt/ros/noetic/share/xacro/cmake/xacro-extras.cmake:167 (xacro_add_xacro_file)
+  recyclamerunlp/wamv_description/CMakeLists.txt:5 (xacro_add_files)
+----
+
+Por esto voy a comener la linea en todos los archivo CMakeLists.txt
+
+El siguiente error fue:
+
+----
+CMake Error at /opt/ros/noetic/share/catkin/cmake/catkinConfig.cmake:83 (find_package):
+  Could not find a package configuration file provided by "geographic_msgs"
+  with any of the following names:
+
+    geographic_msgsConfig.cmake
+    geographic_msgs-config.cmake
+----
+
+Por lo visto no cuenta con el paquete geogrphic_msgs, el siguiente paso seria intentar instalarlo con :
+sudo apt-get install ros-noetic-geographic-msgs
+
+Parece que esto soluciono el problema, ahora al hacer el catkin_make comenzo el porcentaje de build, pero entre medio imprimio (unknown macro name: xacro:sonar
+)
+Error:
+
+----
+hen processing file: urdf/wamv_gazebo.urdf.xacro
+make[2]: *** [recyclamerunlp/wamv_gazebo/CMakeFiles/wamv_gazebo_.dir/build.make:61: recyclamerunlp/wamv_gazebo/urdf/wamv_gazebo.urdf] Error 2
+make[1]: *** [CMakeFiles/Makefile2:6977: recyclamerunlp/wamv_gazebo/CMakeFiles/wamv_gazebo_.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2
+Invoking "make -j2 -l2" failed
+----
+----
+El problema anterior no surgio al correrlo en mi maquina virtual, en su lugar aparecieron problemas relacionados a la migracion de ar_track_alvar a noetic, se encontro del siguiente foro: https://github.com/ros-perception/ar_track_alvar/issues/82
+el cual en conclusion comenta que existe una migracion exitosa a noetic en:
+https://github.com/machinekoder/ar_track_alvar/tree/noetic-devel
+-----
+El siguiente error que surgio fue:
+---
+unknown macro name: xacro:sonar
+when processing file: urdf/wamv_gazebo.urdf.xacro
+make[2]: *** [recyclamerunlp/wamv_gazebo/CMakeFiles/wamv_gazebo_.dir/build.make:61: recyclamerunlp/wamv_gazebo/urdf/wamv_gazebo.urdf] Error 2
+make[1]: *** [CMakeFiles/Makefile2:7442: recyclamerunlp/wamv_gazebo/CMakeFiles/wamv_gazebo_.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2
+Invoking "make -j1 -l1" failed
+-----
+intale las dependencias de gazebo de la siguiente manera:
+
+sudo apt update
+sudo apt full-upgrade
+
+sudo apt install -y build-essential cmake cppcheck curl git gnupg libeigen3-dev libgles2-mesa-dev lsb-release pkg-config protobuf-compiler qtbase5-dev python3-dbg python3-pip python3-venv ruby software-properties-common wget 
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+sudo apt update
+DIST=noetic
+GAZ=gazebo11
+sudo apt install ${GAZ} lib${GAZ}-dev ros-${DIST}-gazebo-plugins ros-${DIST}-gazebo-ros ros-${DIST}-hector-gazebo-plugins ros-${DIST}-joy ros-${DIST}-joy-teleop ros-${DIST}-key-teleop ros-${DIST}-robot-localization ros-${DIST}-robot-state-publisher ros-${DIST}-joint-state-publisher ros-${DIST}-rviz ros-${DIST}-ros-base ros-${DIST}-teleop-tools ros-${DIST}-teleop-twist-keyboard ros-${DIST}-velodyne-simulator ros-${DIST}-xacro ros-${DIST}-rqt ros-${DIST}-rqt-common-plugins
+
+La instalcion se realizo correctamente pero no soluciono el problema
+----------
+comente de la linea 72 a la 89 correspondinetes al sonar ubicado en recyclamer/wamv_gazebo/urdf/warm_gazebo.urdf.xacro
+
+"soluciono" el problema pero ahora ocurre lo mismo con la camara:
+
+unknown macro name: xacro:wamv_camera
+when processing file: urdf/wamv_gazebo.urdf.xacro
+make[2]: *** [recyclamerunlp/wamv_gazebo/CMakeFiles/wamv_gazebo_.dir/build.make:61: recyclamerunlp/wamv_gazebo/urdf/wamv_gazebo.urdf] Error 2
+make[1]: *** [CMakeFiles/Makefile2:7442: recyclamerunlp/wamv_gazebo/CMakeFiles/wamv_gazebo_.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2
+Invoking "make -j1 -l1" failed
+------------
+
+Volvi a comentar la camara y ocurrio lo mismo con el gps 
+-----------
+El problema parece ser que no esta tomando las macros declaradas en recyclamer/wamv_gazebo/urdf/macros.xacro
+Este problema se puede leer aqui:
+http://wiki.ros.org/xacro#Deprecated_Syntax , el cual dice:
+While in previous versions, xacro tags without the namespace prefix were accepted, this sloppy syntax is strongly discouraged as it prevents the use of those tags in the final XML. Since Jade, this syntax is deprecated and you should update your files accordingly. The following script will update your files for you: 
+find . -iname "*.xacro" | xargs sed -i 's#<\([/]\?\)\(if\|unless\|include\|arg\|property\|macro\|insert_block\)#<\1xacro:\2#g'
+
+Esto soluciono el problema pero genero otro en la carpeta /prueba/src/recyclamerunlp/usv_gazebo_plugins/worlds/buoyancy_plugin_demo.world.xacro 
+El error es el siguiente:
+
+xacro:include: missing attribute 'filename'
+when processing file: worlds/buoyancy_plugin_demo.world.xacro
+make[2]: *** [recyclamerunlp/usv_gazebo_plugins/CMakeFiles/usv_gazebo_plugins_.dir/build.make:61: recyclamerunlp/usv_gazebo_plugins/worlds/buoyancy_plugin_demo.world] Error 2
+make[1]: *** [CMakeFiles/Makefile2:7307: recyclamerunlp/usv_gazebo_plugins/CMakeFiles/usv_gazebo_plugins_.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2
+Invoking "make -j1 -l1" failed
+----------------
+
+
