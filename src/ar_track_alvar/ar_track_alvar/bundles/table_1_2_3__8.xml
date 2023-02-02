@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<multimarker markers="4">
+
+
+<!--el indicie "fantasma" que se usa como referencia al centro -->
+    <marker index="8" status="1">   
+        <corner x="-10" y="-10" z="0.0" />
+        <corner x="10" y="-10" z="0.0" />
+        <corner x="10" y="10" z="0.0" />
+        <corner x="-10" y="10" z="0.0" />
+    </marker>
+<!--este se encuentra a la dercha viendolo de frente al tag -->
+    <marker index="0" status="1">
+        <corner x="40" y="-10" z="0.0" />
+        <corner x="60" y="-10" z="0.0" />
+        <corner x="60" y="10" z="0.0" />
+        <corner x="40" y="10" z="0.0" />
+    </marker>
+<!--este se encuentra a la izquierda viendolo de frente al tag -->
+    <marker index="1" status="1">
+        <corner x="-60" y="-10" z="0.0" />
+        <corner x="-40" y="-10" z="0.0" />
+        <corner x="-40" y="10" z="0.0" />
+        <corner x="-60" y="10" z="0.0" />
+    </marker>
+<!--este se encuentra arriba al a izquierda -->
+    <marker index="2" status="1">
+        <corner x="-60" y="40" z="0.0" />
+        <corner x="-40" y="40" z="0.0" />
+        <corner x="-40" y="60" z="0.0" />
+        <corner x="-60" y="60" z="0.0" />
+    </marker>
+
+
+</multimarker>
