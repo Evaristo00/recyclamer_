@@ -1,0 +1,8 @@
+prefix=/home/rc/recyclamer_/install
+
+Name: rotacion
+Description: Description of rotacion
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

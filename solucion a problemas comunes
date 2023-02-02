@@ -1,0 +1,41 @@
+para poder hacer andar el catkin_make :
+
+sudo apt-get install protobuf-compiler
+cd catkin_ws
+rm -rf build/ devel/
+catkin_make
+
+https://github.com/ethz-asl/rotors_simulator/issues/399
+
+-----------------------------------------------------------
+
+conocer el frame id de la camara:
+
+ rostopic echo /wamv/sensors/cameras/front_left_camera/image_raw | grep frame_id
+
+-----------------------------------------------------------------
+
+iniciar mundo: roslaunch vrx_gazebo vrx.launch
+
+iniciar rviz:  roslaunch wamv_gazebo rviz_vrx.launch
+
+frame id: wamv/front_camera_link_optical
+
+link_pid:https://www.youtube.com/watch?v=znWkFWk76XQ
+
+
+----------------------------------------------------------
+
+comando para habilitar puerto USB arduino: sudo chmod a+rw /dev/ttyACM0
+
+comando para ejecutar rosserial: rosrun rosserial_python serial_node.py /dev/ttyACM0
+
+----------------------------------------------------------
+
+diferencia de posicion gps: http://wiki.ros.org/gps_goal
+
+
+
+
+
+

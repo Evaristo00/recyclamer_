@@ -1,0 +1,8 @@
+prefix=/home/rc/recyclamer_/devel
+
+Name: cdr
+Description: Description of cdr
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

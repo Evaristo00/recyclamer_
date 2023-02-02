@@ -1,0 +1,2 @@
+ar_tag_toolbox:ar_track_alvar/ar_track_alvar:ar_track_alvar/ar_track_alvar_msgs:cdr:custom_msg:pid:recyclamerunlp/usv_gazebo_plugins:recyclamerunlp/usv_msgs:recyclamerunlp/vrx_gazebo:recyclamerunlp/wamv_description:recyclamerunlp/wamv_gazebo:recyclamerunlp/wave_gazebo:recyclamerunlp/wave_gazebo_plugins:rotacion:teleop_twist_keyboard
+-DCATKIN_DEVEL_PREFIX=/home/ros/Escritorio/recyclamer_/devel -DCMAKE_INSTALL_PREFIX=/home/ros/Escritorio/recyclamer_/install -G Unix Makefiles

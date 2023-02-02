@@ -1,0 +1,8 @@
+prefix=/home/rc/recyclamer_/devel
+
+Name: custom_msg
+Description: Description of custom_msg
+Version: 0.0.0
+Cflags: -I/home/rc/recyclamer_/devel/include
+Libs: -L${prefix}/lib 
+Requires: 
